@@ -1,0 +1,157 @@
+<html>
+ <head>
+  <title>
+   Konzolvilág
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css">
+ </head>
+ <body>
+  <div class="header">
+   <div class="logo">
+    <img alt="Konzolvilág Logo" height="40" src="logo.jpg"/>
+   </div>
+   <div class="search-bar">
+    <input placeholder="Keresés" type="text"/>
+    <button>
+     <i class="fas fa-search">
+     </i>
+    </button>
+   </div>
+   <div class="cart">
+    <i class="fas fa-shopping-cart">
+    </i>
+    KOSÁR
+   </div>
+   <div class="nav">
+    <a href="#" id="főoldal-button">Főoldal</a>
+    <a href="#" id="bejelentkezes-button">Bejelentkezés</a>
+    <a href="#" id="regisztracio-button">Regisztráció</a>
+    <a href="#" id="akcio-button">Akció</a>
+    <a href="#" id="hasznalt-button">Használt</a>
+    <a href="#" id="playstation-button">PlayStation</a>
+    <a href="#" id="xbox-button">Xbox</a>
+    <a href="#" id="pc-button">PC</a>
+   </div>
+  </div>
+  <div class="main">
+   <div class="sidebar">
+    <h3>Rendezés</h3>
+    <select>
+     <option>Toplista</option>
+     <option>Név szerint</option>
+     <option>Ár szerint</option>
+     <option>Értékelés szerint</option>
+    </select>
+
+    <h3>Aktív szűrések</h3>
+    <button>NINCS AKTÍV SZŰRÉS</button>
+
+    <h3>Készleten</h3>
+    <input type="checkbox" id="keszleten" />
+    <label for="keszleten">Készleten</label>
+    <br />
+    <input type="checkbox" id="rendelheto" />
+    <label for="rendelheto">Rendelhető</label>
+    <br />
+    <input type="checkbox" id="elorendelheto" />
+    <label for="elorendelheto">Előrendelhető</label>
+    <br />
+    <input type="checkbox" id="akcios" />
+    <label for="akcios">Akciós</label>
+    <br />
+
+    <h3>Használt</h3>
+    <input type="radio" id="minden-termek" name="hasznalt" checked />
+    <label for="minden-termek">Minden termék</label>
+    <br />
+    <input type="radio" id="hasznalt-termek" name="hasznalt" />
+    <label for="hasznalt-termek">Használt termékek</label>
+    <br />
+    <input type="radio" id="uj-termek" name="hasznalt" />
+    <label for="uj-termek">Új, bontatlan termékek</label>
+    <br />
+
+    <h3>Megjelenés</h3>
+    <input type="checkbox" id="utolso-30-nap" />
+    <label for="utolso-30-nap">Utolsó 30 nap</label>
+    <br />
+    <input type="checkbox" id="utolso-90-nap" />
+    <label for="utolso-90-nap">Utolsó 90 nap</label>
+    <br />
+    <input type="checkbox" id="90-napnal-regebbi" />
+    <label for="90-napnal-regebbi">90 napnál régebbi</label>
+    <br />
+
+    <h3>Ár tartomány</h3>
+    <input type="number" id="min-ar" placeholder="Min. ár" />
+    <input type="number" id="max-ar" placeholder="Max. ár" />
+    <br />
+
+    <h3>Értékelés</h3>
+    <input type="radio" id="minden-ertekeles" name="ertekeles" checked />
+    <label for="minden-ertekeles">Minden értékelés</label>
+    <br />
+    <input type="radio" id="5-csillag" name="ertekeles" />
+    <label for="5-csillag">5 csillag</label>
+    <br />
+    <input type="radio" id="4-csillag" name="ertekeles" />
+    <label for="4-csillag">4 csillag</label>
+    <br />
+    <input type="radio" id="3-csillag" name="ertekeles" />
+    <label for="3-csill ag">3 csillag </label>
+    <br />
+    <input type="radio" id="2-csillag" name="ertekeles" />
+    <label for="2-csillag">2 csillag</label>
+    <br />
+    <input type="radio" id="1-csillag" name="ertekeles" />
+    <label for="1-csillag">1 csillag</label>
+    <br />
+   </div>
+   <div class="content">
+    <h2 id="page-title">Xbox Series játékok</h2>
+    <p id="page-description">1-24 / 945 termék Xbox Series játékok kategóriában</p>
+    <div class="banner">
+     <img alt="Banner" src="fc25.jpg" />
+    </div>
+    <div class="products" id="akcio-products-list" style="display: none;">
+     <!-- Akció termékek listája -->
+    </div>
+    <div class="products" id="hasznalt-products-list" style="display: none;">
+     <!-- Használt termékek listája -->
+    </div>
+    <div class="products" id="playstation-products-list" style="display: none;">
+     <!-- PlayStation játékok listája -->
+    </div>
+    <div class="products" id="xbox-products-list">
+     <div class="product">
+      <img alt="EA Sports FC 25" height="200" src="fc25ps.jpg" width="150"/>
+      <h4>EA Sports FC 25</h4>
+      <p class="price">27 890 Ft</p>
+      <button class="btn">KOSÁRBA</button>
+     </div>
+     <div class="product">
+      <img alt="NBA" height="250" src="nba25ps5.jpg" width="200"/>
+      <h4>NBA 2K25</h4>
+      <p class="price">12 499 Ft</p>
+      <button class="btn">KOSÁRBA</button>
+     </div>
+     <div class="product">
+      <img alt="EA Sports NHL 25" height="250" src="" width="200"/>
+      <h4>EA Sports NHL 25</h4>
+      <p class="price">27 890 Ft</p>
+      <button class="btn">KOSÁRBA</button>
+     </div>
+     <div class="product">
+      <img alt="Diablo IV" height="250" src="" width="200"/>
+      <h4>ESD MS - Diablo IV: Vessel of Hatred - Deluxe Edition</h4>
+      <p class="price">24 990 Ft</p>
+      <button class="btn">KOSÁRBA</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="index.js"></script>
+ </body>
+</html>
