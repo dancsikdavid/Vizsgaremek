@@ -188,4 +188,117 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 });
+const products = [
+    { name: "Product 1", price: "$19.99", img: "product1.jpg" },
+    { name: "Product 2", price: "$29.99", img: "product2.jpg" },
+    { name: "Product 3", price: "$24.99", img: "product3.jpg" },
+    { name: "Product 4", price: "$34.99", img: "product4.jpg" },
+    { name: "Product 5", price: "$14.99", img: "product5.jpg" },
+    { name: "Product 6", price: "$39.99", img: "product6.jpg" },
+    { name: "Product 7", price: "$44.99", img: "product7.jpg" },
+    { name: "Product 8", price: "$59.99", img: "product8.jpg" },
+    { name: "Product 9", price: "$19.99", img: "product9.jpg" },
+    { name: "Product 10", price: "$29.99", img: "product10.jpg" },
+    { name: "Product 11", price: "$24.99", img: "product11.jpg" },
+    { name: "Product 12", price: "$34.99", img: "product12.jpg" },
+    { name: "Product 13", price: "$14.99", img: "product13.jpg" },
+    { name: "Product 14", price: "$39.99", img: "product14.jpg" },
+    { name: "Product 15", price: "$44.99", img: "product15.jpg" },
+    { name: "Product 16", price: "$59.99", img: "product16.jpg" },
+    { name: "Product 17", price: "$29.99", img: "product17.jpg" },
+    { name: "Product 18", price: "$39.99", img: "product18.jpg" },
+    { name: "Product 19", price: "$34.99", img: "product19.jpg" },
+    { name: "Product 20", price: "$44.99", img: "product20.jpg" },
+    { name: "Product 21", price: "$54.99", img: "product21.jpg" },
+    { name: "Product 22", price: "$14.99", img: "product22.jpg" },
+    { name: "Product 23", price: "$64.99", img: "product23.jpg" },
+    { name: "Product 24", price: "$74.99", img: "product24.jpg" },
+    { name: "Product 25", price: "$84.99", img: "product25.jpg" },
+    { name: "Product 26", price: "$94.99", img: "product26.jpg" },
+    { name: "Product 27", price: "$19.99", img: "product27.jpg" },
+    { name: "Product 28", price: "$29.99", img: "product28.jpg" },
+    { name: "Product 29", price: "$39.99", img: "product29.jpg" },
+    { name: "Product 30", price: "$49.99", img: "product30.jpg" },
+    { name: "Product 31", price: "$59.99", img: "product31.jpg" },
+    { name: "Product 32", price: "$69.99", img: "product32.jpg" },
+];
 
+let currentPage = 0; // Kezdetben 0, mert a loadMoreProducts kezeli az oldalszámot
+const productsPerPage = 8; // Maximum termékek száma oldalon
+const totalProducts = products.length;
+
+function displayProducts() {
+    const productContainer = document.getElementById("product-container");
+    const start = currentPage * productsPerPage;
+    const end = start + productsPerPage;
+    const currentProducts = products.slice(start, end);
+
+    currentProducts.forEach(product => {
+        const productDiv = document.createElement("div");
+        productDiv.className = "product";
+        productDiv.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <h4>${product.name}</h4>
+            <p class="price">${product.price}</p>
+            <button class="btn">KOSÁRBAt</button>
+        `;
+        productContainer.appendChild(productDiv);
+    });
+
+    document.getElementById("loadMoreBtn").disabled = end >= totalProducts; // Ha a megjelenített termékek elérik a maximumot, letiltjuk a gombot
+}
+
+function loadMoreProducts() {
+    currentPage++;
+    displayProducts();
+}
+
+// Kezdőképernyő megjelenítése
+displayProducts();
+
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({ name, price });
+    alert(`${name} hozzáadva a kosárhoz.`);
+}
+
+function displayCart() {
+    const cartContainer = document.getElementById('cart-contents');
+    cartContainer.innerHTML = ''; // Clear previous contents
+    cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = `${item.name} - $${item.price}`;
+        cartContainer.appendChild(itemDiv);
+    });
+    document.getElementById('cart-modal').style.display = 'block';
+}
+
+// Event listener for Add to Cart buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const cartButton = document.querySelector('.cart');
+    const productButtons = document.querySelectorAll('.btn');
+
+    productButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productDiv = button.parentElement;
+            const productName = productDiv.querySelector('h4').innerText;
+            const productPrice = productDiv.querySelector('.price').innerText;
+
+            const product = {
+                name: productName,
+                price: productPrice,
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${productName} hozzáadva a kosárhoz!`);
+        });
+    });
+
+    cartButton.addEventListener('click', () => {
+        window.location.href = 'cart.html';
+    });
+});
